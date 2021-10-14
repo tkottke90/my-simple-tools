@@ -248,6 +248,27 @@ saveBtn.addEventListener('click', () => {
 /** @type {HTMLButtonElement} */
 const clearBtn = document.querySelector('#clear-btn');
 
+function resetDisplays() {
+  const startMessage = 'Enter a JWT to get started';
+
+  const tableDefault = document.createElement('td');
+  tableDefault.textContent = startMessage;
+  tableDefault.colSpan = '3';
+  tableDefault.style.textAlign = 'center';
+  tableDefault.style.padding = '0.5rem';
+
+  const tableDefaultRow = document.createElement('tr');
+  tableDefaultRow.appendChild(tableDefault);
+
+  displayOutput.innerHTML = '';
+  displayOutput.appendChild(tableDefaultRow);
+
+  headerOutput.textContent = startMessage;
+  jsonOutput.textContent = startMessage;
+}
+
 clearBtn.addEventListener('click', () => {
   input.value = '';
+
+  resetDisplays();
 });
