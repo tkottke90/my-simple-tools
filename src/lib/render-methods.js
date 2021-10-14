@@ -20,7 +20,7 @@ export function renderIcon(iconName) {
  */
 export function renderIconButton(iconName, callback) {
   const button = document.createElement('button');
-  const icon = renderIcon(icon);
+  const icon = renderIcon(iconName);
 
   button.appendChild(icon);
   button.addEventListener('click', callback);
