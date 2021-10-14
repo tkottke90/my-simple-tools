@@ -209,15 +209,17 @@ function generateSaveTokenRow(tokenDetails, index) {
 
   const expired = (tokenDetails.expiration * 1000) < timestamp.valueOf();
   const statusCol = document.createElement('td');
-  const expiration = expired 
-    ? createIconButton('hexagon-outline', () => {}) 
-    : createIconButton('hexagon-slice-6', () => {})  
+  const expirationIcon = document.createElement('span');
+
+  expirationIcon.classList.add('iconify');
+  expirationIcon.dataset.icon = expired ? 'mdi-hexagon-outline' : 'mdi-hexagon-slice-6'
+  expirationIcon.style.borderRadius = '50%';
   
   if (expired) {
-    expiration.style.color = "var(--theme-warn)";
+    expirationIcon.style.color = "var(--theme-warn)";
   }
   
-  statusCol.appendChild(expiration);
+  statusCol.appendChild(expirationIcon);
     
   const actionsCol = document.createElement('td');
   const loadButton = createIconButton('arrow-up-bold-hexagon-outline', () => {
