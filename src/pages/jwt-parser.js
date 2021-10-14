@@ -1,4 +1,5 @@
 import { copyToClipboard } from '/lib/clipboard.js'
+import { renderIcon, renderIconButton } from '/lib/render-methods.js';
 
 /**
  * @typedef JWTDetails
@@ -20,6 +21,9 @@ const previousInputs = [];
 
 /** @type {HTMLTextAreaElement} */
 const input = document.querySelector('#input');
+
+/** @type {HTMLParagraphElement} */
+const inputErrorHint = document.querySelector('p.input-error');
 
 /** @type {HTMLDivElement} */
 const jsonOutput = document.querySelector('#raw-json');
@@ -53,7 +57,7 @@ function generateDisplayObject(original) {
     original,
     parts,
     timestamp: new Date().valueOf(),
-    expiration: payload.exp ? payload.exp : 0,
+    expiration: payload && payload.exp ? payload.exp : 0,
     parsed: {
       header,
       payload,
@@ -131,11 +135,14 @@ function renderJWTForm(details) {
 
 input.addEventListener('input', ($event) => {
   input.setCustomValidity('');
-
-
+  
   const inputVal = input.value;
   let outputVal = "No Content";
   let headerVal = "No Content";
+
+  if (!input.value) {
+    return;
+  }
 
   const details = generateDisplayObject(inputVal);
 
@@ -157,7 +164,10 @@ input.addEventListener('input', ($event) => {
 
     saveBtn.disabled = false;
   } else {
-    input.setCustomValidity('Invalid JWT');
+    const message = 'Invalid JWT';
+
+    input.setCustomValidity(message);
+    inputErrorHint.textContent = message;
     saveBtn.disabled = true;
   }
 

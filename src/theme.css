@@ -119,6 +119,11 @@ input {
   width: 100%;
 }
 
+input:invalid,
+textarea:invalid {
+  border-color: var(--theme-warn);
+}
+
 table {
   table-layout: fixed;
   width: 100%;
@@ -228,6 +233,26 @@ textarea {
 .text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.input-error {
+  height: 1rem;
+
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--theme-warn);
+
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+
+  transition: all 100ms var(--decelerate-bezier);
+}
+
+textarea:invalid ~ .input-error,
+input:invalid ~ .input-error {
+  transform: scaleY(1);
+  opacity: 1;
 }
 
 .overlay-container {
