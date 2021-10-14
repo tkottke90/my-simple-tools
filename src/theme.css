@@ -103,6 +103,11 @@ button:disabled {
   cursor: default;
 }
 
+button > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 iframe {
   border: none;
 }
@@ -149,6 +154,10 @@ textarea {
 .tab-container {
   border-bottom: 1px solid #bbb;
   margin-bottom: 0.5rem;  
+}
+
+.tab-container > .tab {
+  border-radius: 0;
 }
 
 .tab-container > .tab.active {
