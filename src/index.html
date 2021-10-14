@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/assets/MyLogo.svg">
+  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/theme.css">
+  <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+  <title>My Simple Tools</title>
+</head>
+<body>
+  <main>
+    <aside>
+      <nav>
+        <img id="logo" src="/assets/MyLogo.svg" alt="My Personal Logo" />
+        <section class="buttons">
+          <button id="jwt-parser" data-src="/pages/jwt-parser.html" class="nav-button">JWT Parser</button>
+          <button id="" class="nav-button">Faker Data</button>
+        </section>
+      </nav>
+      <footer>
+        <p>Author:</p>
+        <p>Thomas Kottke</p>
+      </footer>
+    </aside>
+    <section>
+      <div id="router-outlet">
+        <section class="actions">
+          <button id="back-btn">
+            <!-- REF: https://dev.materialdesignicons.com/guide/iconify -->
+            <span class="iconify" data-icon="mdi-arrow-left-bold"></span>
+            <span>Back</span>
+          </button>
+        </section>
+        <iframe></iframe>
+      </div>
+      <div id="home">
+        <div class="title">
+          <h3>My Simple Tools</h3>
+          <p>Collection of browser based tools to help me with my everyday work.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/index.js"></script>
+</body>
+</html>

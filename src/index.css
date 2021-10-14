@@ -1,0 +1,68 @@
+body {
+  overflow-y: hidden;
+}
+
+main {
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+}
+
+main > aside {
+  background-color: var(--theme-primary);
+  color: var(--theme-on-primary);
+
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+#logo {
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0 3rem;
+}
+
+main > section {
+  padding: 1rem;
+}
+
+.router-outlet {
+  height: 100%;
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+}
+
+#router-outlet {
+  height: 100%;
+
+  display: flex;
+  flex-flow: column;
+}
+
+#router-outlet:not([show]) {
+  display: none;
+}
+
+#router-outlet[show] + #home {
+  display: none;
+}
+
+#router-outlet > iframe {
+  flex-grow: 1;
+}
+
+#home {
+  padding-top: 2rem;
+}
+
+footer {
+  margin-bottom: 1rem;
+}
+
+footer > p {
+  text-align: center;
+}

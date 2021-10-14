@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Parser</title>
+  
+  <style>
+    body {
+      overflow-y: auto;
+    }
+
+    #form {
+      margin: auto;
+      margin-top: auto;
+      max-width: 40rem;
+      margin-top: 2rem;
+    }
+    
+    #save-btn {
+      color: var(--theme-primary);
+    }
+    
+    #tabs {
+      color: var(--theme-accent);
+      margin-top: 1rem;
+    }
+
+    #payload-table, #json {
+      width: 100%;
+    }
+
+    #payload-table td.actions {
+      display: flex;
+      justify-content: center;
+    }
+    
+    #payload-table td.actions > button {
+      border-radius: 50%;
+    }
+
+    #payload-table td.actions > button:hover {
+      background-color: var(--foreground-hover);
+    }
+
+    #previous tr td:nth-child(1) {
+      text-align: center;
+    }
+
+    #previous tr td:nth-child(3),
+    #previous tr td:nth-child(4) {
+      text-align: center;
+    }
+
+  </style>
+  <link rel="stylesheet" href="/theme.css">
+  <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+</head>
+<body>
+  <main>
+    <header class="title">
+      <h3>JWT Parser</h3>
+      <p>Tool to parse JSON Web Tokens into their components</p>
+    </header>
+    <section class="container-md card">
+      <textarea class="theme-border" placeholder="Enter JWT Here" id="input"></textarea>
+      <button id="save-btn">Save</button>
+    </section>
+    <section class="container-md card accordion">
+      <input id="accordion" checked type="checkbox">
+      <label for="accordion">JWT Details</label>
+      <div class="accordion-content">
+        <div id="tabs" class="tab-container">
+          <button class="tab active" data-tab="form" data-tab-display="">Payload</button>
+          <button class="tab" data-tab="header" data-tab-display="">Header</button>
+          <button class="tab" data-tab="raw" data-tab-display="">JSON</button>
+        </div>
+        <div class="tab-content">
+          <table id="payload-table" class="active" data-tab="form" data-tab-display="">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Value</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="payload">
+              <tr>
+                <td colspan="3" style="text-align: center; padding: 0.5rem;">Enter a JWT to get started</td>
+              </tr>
+            </tbody>
+          </table>
+          <section id="json" data-tab="header" data-tab-display="">
+            <br>
+            <pre class="text-ellipsis"><code id="header-json">Enter a JWT to get started</code></pre>
+          </section>
+          <section id="json" data-tab="raw" data-tab-display="">
+            <br>
+            <pre class="text-ellipsis"><code id="raw-json">Enter a JWT to get started</code></pre>
+          </section>
+        </div>
+        
+      </div>
+    </section>
+    <section class="container-md card">
+      <table id="saved-tokens">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Token</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="previous">
+          
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script type="module" src="../lib/clipboard.js"></script>
+  <script type="module" src="../lib/tab.js"></script>
+  <script type="module" src="./jwt-parser.js"></script>
+</body>
+</html>
