@@ -242,4 +242,12 @@ saveBtn.addEventListener('click', () => {
   updateSavedList()
 
   input.value = '';
+  saveBtn.disabled = true;
+});
+
+/** @type {HTMLButtonElement} */
+const clearBtn = document.querySelector('#clear-btn');
+
+clearBtn.addEventListener('click', () => {
+  input.value = '';
 });
