@@ -38,6 +38,7 @@ const createIconButton = (iconName, callback) => {
   const icon = document.createElement('span');
   
   button.addEventListener('click', callback);
+  button.classList.add('icon');
 
   icon.classList.add('iconify');
   icon.dataset.icon = `mdi-${iconName}`
