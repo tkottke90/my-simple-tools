@@ -30,6 +30,8 @@ const headerOutput = document.querySelector('#header-json')
 /** @type {HTMLDivElement} */
 const displayOutput = document.querySelector('#payload');
 
+/** @type {HTMLButtonElement} */
+const saveBtn = document.querySelector('#save-btn');
 
 const createIconButton = (iconName, callback) => {
   const button = document.createElement('button');
@@ -149,8 +151,10 @@ input.addEventListener('input', ($event) => {
   
     currentInput = details;
 
+    saveBtn.disabled = false;
   } else {
     input.setCustomValidity('Invalid JWT');
+    saveBtn.disabled = true;
   }
 
 });
@@ -230,9 +234,6 @@ function updateSavedList() {
     })
 }
 
-
-/** @type {HTMLButtonElement} */
-const saveBtn = document.querySelector('#save-btn');
 saveBtn.addEventListener('click', () => {
   previousList.innerHTML = '';
   const details = generateDisplayObject(input.value);
