@@ -13,3 +13,4 @@ The JWT Parser will consume JSON Web Tokens and display their payload and header
 
 In addition, the `save` button allows me to store tokens and retrieve them, allowing me to work with multiple tokens at once if I am inspecting and comparing tokens.
 
+![image](https://user-images.githubusercontent.com/26103969/137333241-e4988783-1ae0-4fa7-aab9-1339e8d16bb8.png)
