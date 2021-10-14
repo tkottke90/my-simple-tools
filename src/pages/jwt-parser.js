@@ -112,6 +112,24 @@ function renderJWTForm(details) {
     actions.appendChild(copyButton);
     actions.appendChild(pushButton);
 
+    const dateKeys = [ 'exp', 'iat', 'auth_time' ];
+    if (dateKeys.includes(key)) {
+      const convertBtn = createIconButton('calendar-import', () => {
+        const date = new Date(Number(value) * 1000);
+        const validDate = !isNaN(date.valueOf());
+  
+  
+        localInput.value = validDate ? `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` : value;
+      });
+      
+      actions.appendChild(convertBtn);
+    } else {
+      const placeholderBtn = createIconButton('calendar-import', () => {});
+      placeholderBtn.style.opacity = '0';
+      placeholderBtn.style.cursor = 'default';
+      actions.appendChild(placeholderBtn);
+    }
+
     label.innerText = key;
     localInput.value = value;
     localInput.readOnly = true;
