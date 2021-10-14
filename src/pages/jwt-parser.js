@@ -104,11 +104,18 @@ function renderJWTForm(details) {
     const dateKeys = [ 'exp', 'iat', 'auth_time' ];
     if (dateKeys.includes(key)) {
       const convertBtn = renderIconButton('calendar-import', () => {
-        const date = new Date(Number(value) * 1000);
-        const validDate = !isNaN(date.valueOf());
-  
-  
-        localInput.value = validDate ? `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` : value;
+        const inputValue = Number(localInput.value);
+        const isDate = isNaN(inputValue);
+
+        if (isDate) {
+          localInput.value = details[key];
+        } else { 
+          const date = new Date(Number(value) * 1000);
+          const validDate = !isNaN(date.valueOf());
+    
+    
+          localInput.value = validDate ? `${date.toLocaleDateString()} ${date.toLocaleTimeString()}` : value;
+        }
       });
       
       actions.appendChild(convertBtn);
