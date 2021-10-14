@@ -98,14 +98,17 @@ button.nav-button:not([data-src]) {
   background-color: rgb(61, 61, 61);
 }
 
+button.icon {
+  border-radius: 50%;
+}
+
+button.icon:hover {
+  background-color: var(--foreground-hover);
+}
+
 button:disabled {
   opacity: 0.5;
   cursor: default;
-}
-
-button > svg {
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
 iframe {
@@ -124,6 +127,11 @@ table {
 textarea {
   resize: vertical;
   width: 100%;
+}
+
+.iconify {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .title {
