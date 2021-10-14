@@ -161,10 +161,11 @@ input.addEventListener('input', ($event) => {
 
 /**
  * Generate a table row ('tr') element with details about the saved token
- * @param {JWTDetails} tokenDetails 
+ * @param {JWTDetails} tokenDetails Object containing the details about the token
+ * @param {number} index Index of the saved token in the array
  * @returns {HTMLTableRowElement}
  */
-function generateSaveTokenRow(tokenDetails) {
+function generateSaveTokenRow(tokenDetails, index) {
   const timestamp = new Date();
   
   const row = document.createElement('tr');
@@ -191,10 +192,8 @@ function generateSaveTokenRow(tokenDetails) {
   const statusCol = document.createElement('td');
   const expiration = expired 
     ? createIconButton('hexagon-outline', () => {}) 
-    : createIconButton('hexagon-slice-6', () => {})
-
-    
-    
+    : createIconButton('hexagon-slice-6', () => {})  
+  
   if (expired) {
     expiration.style.color = "var(--theme-warn)";
   }
@@ -211,7 +210,13 @@ function generateSaveTokenRow(tokenDetails) {
     input.dispatchEvent(event);
   });
 
+  const deleteButton = createIconButton('delete-forever', () => {
+    previousInputs.splice(index, 1);
+    updateSavedList();
+  })
+
   actionsCol.appendChild(loadButton);
+  actionsCol.appendChild(deleteButton);
 
   row.appendChild(dateCol);
   row.appendChild(tokenCol);
@@ -225,6 +230,7 @@ function generateSaveTokenRow(tokenDetails) {
 const previousList = document.querySelector('#previous');
 
 function updateSavedList() {
+  previousList.innerHTML = '';
   previousInputs
     .sort((a, b) => a.timestamp > b.timestamp ? 1 : -1)
     .forEach(token => {
@@ -235,7 +241,6 @@ function updateSavedList() {
 }
 
 saveBtn.addEventListener('click', () => {
-  previousList.innerHTML = '';
   const details = generateDisplayObject(input.value);
   previousInputs.push(details);
   
