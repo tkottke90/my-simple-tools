@@ -18,8 +18,25 @@
       margin-top: 2rem;
     }
     
-    #save-btn {
+
+    #input-actions {
+      margin-top: 1rem;
+
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    #input-actions > button {
+      margin-left: 1rem;
+    }
+
+    #clear-btn {
       color: var(--theme-primary);
+    }
+
+    #save-btn {
+      color: var(--theme-on-primary);
+      background-color: var(--theme-primary);
     }
     
     #tabs {
@@ -65,7 +82,10 @@
     </header>
     <section class="container-md card">
       <textarea class="theme-border" placeholder="Enter JWT Here" id="input"></textarea>
-      <button id="save-btn">Save</button>
+      <div id="input-actions">
+        <button id="clear-btn">Clear</button>
+        <button id="save-btn" disabled>Save</button>
+      </div>
     </section>
     <section class="container-md card accordion">
       <input id="accordion" checked type="checkbox">
