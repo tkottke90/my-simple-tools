@@ -33,21 +33,6 @@ const displayOutput = document.querySelector('#payload');
 /** @type {HTMLButtonElement} */
 const saveBtn = document.querySelector('#save-btn');
 
-const createIconButton = (iconName, callback) => {
-  const button = document.createElement('button');
-  const icon = document.createElement('span');
-  
-  button.addEventListener('click', callback);
-  button.classList.add('icon');
-
-  icon.classList.add('iconify');
-  icon.dataset.icon = `mdi-${iconName}`
-
-  button.appendChild(icon)
-
-  return button;
-}
-
 /**
  * Consume a JWT String and return a JWT Details object
  * @param {string} original
@@ -95,11 +80,11 @@ function renderJWTForm(details) {
     const actions = document.createElement('td');
     actions.classList.add('actions');
 
-    const copyButton = createIconButton('content-copy', () => {
+    const copyButton = renderIconButton('content-copy', () => {
       copyToClipboard(value);
     })
 
-    const pushButton = createIconButton('arrow-up-bold-hexagon-outline', () => {
+    const pushButton = renderIconButton('arrow-up-bold-hexagon-outline', () => {
       const event = new Event('input', {
         bubbles: true,
         cancelable: true,
@@ -114,7 +99,7 @@ function renderJWTForm(details) {
 
     const dateKeys = [ 'exp', 'iat', 'auth_time' ];
     if (dateKeys.includes(key)) {
-      const convertBtn = createIconButton('calendar-import', () => {
+      const convertBtn = renderIconButton('calendar-import', () => {
         const date = new Date(Number(value) * 1000);
         const validDate = !isNaN(date.valueOf());
   
@@ -124,7 +109,7 @@ function renderJWTForm(details) {
       
       actions.appendChild(convertBtn);
     } else {
-      const placeholderBtn = createIconButton('calendar-import', () => {});
+      const placeholderBtn = renderIconButton('calendar-import', () => {});
       placeholderBtn.style.opacity = '0';
       placeholderBtn.style.cursor = 'default';
       actions.appendChild(placeholderBtn);
@@ -222,7 +207,7 @@ function generateSaveTokenRow(tokenDetails, index) {
   statusCol.appendChild(expirationIcon);
     
   const actionsCol = document.createElement('td');
-  const loadButton = createIconButton('arrow-up-bold-hexagon-outline', () => {
+  const loadButton = renderIconButton('arrow-up-bold-hexagon-outline', () => {
     const event = new Event('input', {
       bubbles: true,
       cancelable: true,
@@ -231,7 +216,7 @@ function generateSaveTokenRow(tokenDetails, index) {
     input.dispatchEvent(event);
   });
 
-  const deleteButton = createIconButton('delete-forever', () => {
+  const deleteButton = renderIconButton('delete-forever', () => {
     previousInputs.splice(index, 1);
     updateSavedList();
   })
