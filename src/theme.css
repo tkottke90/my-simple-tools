@@ -77,6 +77,10 @@ button {
   border-radius: 0.25rem;
 }
 
+button:hover:not(:disabled) {
+  background-color: hsl(0, 0%, 91%);
+}
+
 button.nav-button {
 
   width: 100%;
@@ -88,6 +92,7 @@ button.nav-button {
 }
 
 button.nav-button:hover {
+  filter: none;
   border-color: hsla(0, 100%, 100%, 100%);
 }
 
@@ -106,6 +111,19 @@ button.icon:hover {
   background-color: var(--foreground-hover);
 }
 
+button.icon-prefix {
+  display: flex;
+}
+
+button.icon-prefix > span {
+  margin-left: 0.5rem;
+}
+
+button[raised] {
+  color: var(--theme-on-primary);
+  background: var(--theme-primary);
+}
+
 button:disabled {
   opacity: 0.5;
   cursor: default;
@@ -115,13 +133,24 @@ iframe {
   border: none;
 }
 
-input {
+input, select {
   width: 100%;
 }
 
+select {
+  padding: 0.5rem 0.75rem;
+  background-color: transparent;
+  border: 2px solid var(--theme-accent);
+}
+
 input:invalid,
-textarea:invalid {
+textarea:invalid,
+select:invalid {
   border-color: var(--theme-warn);
+}
+
+optgroup {
+  text-transform: capitalize;
 }
 
 table {
@@ -268,4 +297,21 @@ input:invalid ~ .input-error {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrim {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0,0,0,0.5);
 }

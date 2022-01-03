@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faker Utility</title>
+  <link rel="stylesheet" href="/theme.css">
+  <style>
+    #schema-accordion~.accordion-content {
+      margin-top: 1rem;
+    }
+
+    #schema tbody>tr.empty-label:not(:only-child) {
+      display: none;
+    }
+
+    #form-actions,
+    #actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    .empty-label>td {
+      text-align: center;
+    }
+
+    .form-field {
+      margin: 0.5rem 0;
+    }
+
+    .form-field label {
+      margin: auto;
+      flex: 15rem 1 2;
+    }
+
+    .form-field>div {
+      width: 100%;
+    }
+
+    .form-field input {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .form-field select option {
+      text-transform: capitalize;
+    }
+
+    .actions-group {
+      margin: auto;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  </style>
+  <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+</head>
+
+<body>
+  <header class="title">
+    <h3>Data Generator</h3>
+    <p>Tool to generate fake data in various formats</p>
+  </header>
+  <main>
+    <section class="container-md card accordion">
+      <input id="schema-accordion" checked type="checkbox">
+      <label for="schema-accordion">Schema</label>
+      <p>Craft the list of data attributes you would like each entry to contain</p>
+      <div class="accordion-content">
+        <form id="schema">
+          <table>
+            <thead>
+              <tr>
+                <th>Field Name</th>
+                <th>Field Type</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="empty-label">
+                <td colspan="3">Click <i>Add Item</i> to get started</t0d>
+              </tr>
+            </tbody>
+          </table>
+          <p></p>
+        </form>
+        <section id="form-actions">
+          <button id="add" class="icon-prefix">
+            <span class="iconify" data-icon="mdi-add"></span>
+            <span>Add Item</span>
+          </button>
+        </section>
+      </div>
+    </section>
+
+    <section id="actions" class="container-md card">
+      <button id="test" class="icon-prefix" disabled>
+        <span class="iconify" data-icon="mdi-test-tube"></span>
+        <span>Test Schema</span>
+      </button>
+      <button id="generate" class="icon-prefix" disabled>
+        <span class="iconify" data-icon="mdi-refresh"></span>
+        <span>Generate Data</span>
+      </button>
+      <button id="save" class="icon-prefix" disabled>
+        <span class="iconify" data-icon="mdi-content-save-cog"></span>
+        <span>Save Schema</span>
+      </button>
+    </section>
+
+    <section class="container-md card accordion">
+      <input id="data-accordion" checked type="checkbox">
+      <label for="data-accordion">Data</label>
+      <div class="accordion-content">
+        <pre><code id="code"></code></pre>
+      </div>
+    </section>
+  </main>
+
+  <div class="dialog">
+    <div class="dialog-content">
+
+    </div>
+  </div>
+
+  <template id="field-group">
+    <tr>
+      <td class="form-field">
+        <input id="name" placeholder="First Name" required />
+        <p class="input-error"></p>
+      </td>
+      <td class="form-field">
+        <select required></select>
+        <p class="input-error"></p>
+      </td>
+      <td>
+        <div class="actions-group">
+          <button id="delete-field" class="icon-button icon">
+            <span class="iconify" data-icon="mdi-delete"></span>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </template>
+
+  <script src="./faker.js" type="module"></script>
+  <script src="../lib/dialog.js" type="module"></script>
+</body>
+
+</html>
