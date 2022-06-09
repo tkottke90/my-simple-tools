@@ -1,6 +1,6 @@
 {
   "name": "my-simple-tools",
-  "version": "1.1.0-0",
+  "version": "1.1.0",
   "description": "Some task that I need to do on a daily basis require me to have multiple external tools open at once.  Those tools do not always have every piece of functionality I am looking for.  This repository holds self-made tools instead.",
   "main": "src/index.html",
   "scripts": {
